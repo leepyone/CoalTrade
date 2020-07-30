@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
@@ -24,8 +25,10 @@ public class UserController {
         return "login";
     }
     @RequestMapping("/login")
-    public String login(String account, String password, Map map){
+    public String login(String account, String password, Map map, HttpSession httpSession){
         User user = userService.GetUser(account.trim());
+        httpSession.setAttribute("loginUser" ,user);
+        map.put("loginUser" ,user);
         if(user.getUserPassword().equals(password.trim()))
             return "index";
         else{
