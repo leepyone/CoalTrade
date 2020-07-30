@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+        <title>国电煤炭</title>
+    </head>
+    <style type="text/css">
+        .upLogo {
+            padding-left: 10px;
+        }
+        .marginFix{
+            margin-left:30px;
+            margin-top:30px
+        }
+    </style>
+    <body class="cm-no-transition cm-1-navbar">
+        <div id="cm-menu">
+            <nav class="cm-navbar cm-navbar-primary">
+                <div class="cm-flex upLogo"><a href="#"><img src="./assets/img/logo.png"/></a></div>
+                <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
+            </nav>
+            <div id="cm-menu-content">
+                <div id="cm-menu-items-wrapper">
+                    <div id="cm-menu-scroller">
+                        <ul class="cm-menu-items">
+                            <li class="active"><a href="#" class="sf-house">主页</a></li>
+                            <li class="cm-submenu" >
+                                <a href="#" class=" sf-file-excel">采购申请管理<span class="caret"></span></a>
+                                <ul>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                </ul>
+                            </li>
+                            <li class="cm-submenu">
+                                <a href="#" class="sf-box">采购执行报批<span class="caret"></span></a>
+                                <ul>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                </ul>
+                            </li>
+                            <li class="cm-submenu">
+                                <a class="sf-window-layout">供应商管理 <span class="caret"></span></a>
+                                <ul>
+                                    <li><a href="/toProducerList">供应商列表</a></li>
+                                    <li><a href="#">供应商审核</a></li>
+                                    <li><a href="#">月度评分</a></li>
+                                    <li><a href="#">年度评分</a></li>
+                                </ul>
+                            </li>
+                            <li class="cm-submenu">
+                                <a class="sf-money">保证金管理<span class="caret"></span></a>
+                                <ul>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                </ul>
+                            </li>
+                            <li class="cm-submenu">
+                                <a class=" sf-notepad">长协交易<span class="caret"></span></a>
+                                <ul>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                </ul>
+                            </li>
+                            <li class="cm-submenu">
+                                <a class="sf-user-male-alt">用户管理<span class="caret"></span></a>
+                                <ul>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                    <li><a href="#">二级标题</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li><a href="#" class="sf-lock-open">Login page</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header id="cm-header">
+            <nav class="cm-navbar cm-navbar-primary">
+                <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+                <div class="cm-flex">
+                    <h1>主页</h1> 
+                    <form id="cm-search" action="index.html" method="get">
+                        <input type="search" name="q" autocomplete="off" placeholder="Search...">
+                    </form>
+                </div>
+                <!-- <div class="pull-right">
+                    <div id="cm-search-btn" class="btn btn-primary md-search-white" data-toggle="cm-search"></div>
+                </div>
+                <div class="dropdown pull-right">
+                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span class="label label-danger">23</span> </button>
+                    <div class="popover cm-popover bottom">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <h4 class="list-group-item-heading text-overflow">
+                                        <i class="fa fa-fw fa-envelope"></i> Nunc volutpat aliquet magna.
+                                    </h4>
+                                    <p class="list-group-item-text text-overflow">Pellentesque tincidunt mollis scelerisque. Praesent vel blandit quam.</p>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <h4 class="list-group-item-heading">
+                                        <i class="fa fa-fw fa-envelope"></i> Aliquam orci lectus
+                                    </h4>
+                                    <p class="list-group-item-text">Donec quis arcu non risus sagittis</p>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <h4 class="list-group-item-heading">
+                                        <i class="fa fa-fw fa-warning"></i> Holy guacamole !
+                                    </h4>
+                                    <p class="list-group-item-text">Best check yo self, you're not looking too good.</p>
+                                </a>
+                            </div>
+                            <div style="padding:10px"><a class="btn btn-success btn-block" href="#">Show me more...</a></div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="dropdown pull-right">
+                    <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+                        <li class="disabled text-center">
+                            <a style="cursor:default;"><strong>小明</strong></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i>个人信息</a>
+                        </li>
+                        <!-- <li>
+                            <a href="#"><i class="fa fa-fw fa-cog"></i> 设置</a>
+                        </li> -->
+                        <li>
+                            <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> 退出</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="global">
+            <div class="container-fluid">
+                <div class="row cm-fix-height">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">通知</div>
+                            <div class="panel-body">
+                                <table class="table table-hover" style="margin-bottom:0">
+                                    <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>标题</th>
+                                            <th>时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            
+                                            <td>环球集团关于环球煤炭阳光采购平台服务器更新的通知</td>
+                                            <td>2020年7月26日</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            
+                                            <td>环球集团关于环球煤炭阳光采购平台日常管理工作移交的公告</td>
+                                            <td>2020年7月26日</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            
+                                            <td>华北公司阳光采购报价日期调整公告</td>
+                                            <td>2020年7月26日</td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">paragraphs</div>
+                            <div class="panel-body">
+                                
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">其他的资讯</div>
+                            <div class="panel-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">其他的资讯</div>
+                            <div class="panel-body">
+                                
+                            </div>
+                            
+                    </div>
+                </div>
+                <div class="row cm-fix-height">
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">其他的资讯</div>
+                            <div class="panel-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">其他的资讯</div>
+                            <div class="panel-body">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">其他的资讯</div>
+                            <div class="panel-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="cm-footer"><span class="pull-left">Connected as Sure</span><span class="pull-right">&copy; PAOMEDIA SARL</span></footer>
+        </div>
+        
+        <script src="assets/js/lib/jquery.min.js"></script>
+        <script src="assets/js/jquery.mousewheel.min.js"></script>
+        <script src="assets/js/jquery.cookie.min.js"></script>
+        <script src="assets/js/fastclick.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/clearmin.min.js"></script>
+        <script src="assets/js/demo/home.js"></script>
+    </body>
+</html>
