@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 public class test {
@@ -30,6 +31,16 @@ public class test {
         List<producer> allProducer = producerDao.getAllProducer();
         producer producer = allProducer.get(0);
         System.out.println(producer);
+
+    }
+    @Test
+    public void testGetProducerCheck(){
+        Map<String, String> producerCheck = producerDao.getProducerCheck(1);
+        System.out.println(producerCheck);
+    }
+    @Test
+    public void testAddBlack(){
+        System.out.println(producerDao.addBlack(1));
 
     }
 }

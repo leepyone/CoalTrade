@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <base th:href="${#request.getContextPath()}+'/'">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
         <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
@@ -29,9 +30,9 @@
                 <div id="cm-menu-items-wrapper">
                     <div id="cm-menu-scroller">
                         <ul class="cm-menu-items">
-                            <li class=""><a href="#" class="sf-house">主页</a></li>
+                            <li class=""><a  class="sf-house">主页</a></li>
                             <li class="cm-submenu" >
-                                <a href="#" class=" sf-file-excel">采购申请管理<span class="caret"></span></a>
+                                <a class=" sf-file-excel">采购申请管理<span class="caret"></span></a>
                                 <ul>
                                     <li><a href="#">二级标题</a></li>
                                     <li><a href="#">二级标题</a></li>
@@ -39,7 +40,7 @@
                                 </ul>
                             </li>
                             <li class="cm-submenu">
-                                <a href="#" class="sf-box">采购执行报批<span class="caret"></span></a>
+                                <a  class="sf-box">采购执行报批<span class="caret"></span></a>
                                 <ul>
                                     <li><a href="#">二级标题</a></li>
                                     <li><a href="#">二级标题</a></li>
@@ -49,7 +50,7 @@
                             <li class="cm-submenu  ">
                                 <a class="sf-window-layout  active">供应商管理 <span class="caret"></span></a>
                                 <ul>
-                                    <li class="active" ><a href="#">供应商列表</a></li>
+                                    <li class="active" ><a href="/toProducerList">供应商列表</a></li>
                                     <li><a href="/toProducerList">供应商审核</a></li>
                                     <li><a href="#">月度评分</a></li>
                                     <li><a href="#">年度评分</a></li>
@@ -129,6 +130,7 @@
                                             <th>法人</th>
                                             <th>机构代码</th>
                                             <th>联系电话</th>
+<!--                                            <th>供应商类型</th>-->
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -139,7 +141,8 @@
                                             <td th:text="${producer.getLegalPerson()}"><font size= 4>小明</font></td>
                                             <td th:text="${producer.getProducerCode()}"><font size= 4>2656516jbhj</font></td>
                                             <td th:text="${producer.getConnectNumber()}"><font size= 4>1679108504</font></td>
-                                            <td><a class="btn  btn-info"  href="#">修改</a></td>
+<!--                                            <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
+                                            <td><a class="btn  btn-info"  th:href="@{'/toProducerMes/'+${producer.getProducerId()}}">修改</a></td>
                                         </tr>
                                     </tbody>
                                 </table> 
