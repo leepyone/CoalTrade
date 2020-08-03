@@ -51,7 +51,7 @@
                                 <a class="sf-window-layout  active">供应商管理 <span class="caret"></span></a>
                                 <ul>
                                     <li class="active" ><a href="/toProducerList">供应商列表</a></li>
-                                    <li><a href="/toProducerList">供应商审核</a></li>
+                                    <li><a href="/toProducerCheckList">供应商审核</a></li>
                                     <li><a href="#">月度评分</a></li>
                                     <li><a href="#">年度评分</a></li>
                                 </ul>
@@ -130,18 +130,33 @@
                                             <th>法人</th>
                                             <th>机构代码</th>
                                             <th>联系电话</th>
-<!--                                            <th>供应商类型</th>-->
+                                            <th>供应商类型</th>
+                                            <th>审核状态</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="producer:${allProducer}">
-                                            <th scope="row" th:text="${producer.getProducerId()}"><font size= 4>1</font></th>
+                                        <tr th:each="producer,producerStat:${allProducer}">
+                                            <th scope="row" th:text="${producerStat.count}"><font size= 4>1</font></th>
                                             <td th:text="${producer.getProducerName()}"><font size= 4>xxx公司</font></td>
                                             <td th:text="${producer.getLegalPerson()}"><font size= 4>小明</font></td>
                                             <td th:text="${producer.getProducerCode()}"><font size= 4>2656516jbhj</font></td>
                                             <td th:text="${producer.getConnectNumber()}"><font size= 4>1679108504</font></td>
-<!--                                            <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
+                                            <div th:switch="${producer.getProducerType()}">
+<!--                                                <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
+                                                <td th:case="'0'">重点供应商</td>
+                                                <td th:case="'1'">内部供应商</td>
+                                                <td th:case="'2'">一般供应商</td>
+                                                <td th:case="'3'">临时供应商</td>
+                                            </div>
+                                            <div th:switch="${producer.getRegisterState()}">
+                                                <!--                                                <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
+                                                <td th:case="'0'">待审核</td>
+                                                <td th:case="'1'">审核中</td>
+                                                <td th:case="'2'">审核通过</td>
+                                                <td th:case="'3'">审核驳回</td>
+                                            </div>
+
                                             <td><a class="btn  btn-info"  th:href="@{'/toProducerMes/'+${producer.getProducerId()}}">修改</a></td>
                                         </tr>
                                     </tbody>

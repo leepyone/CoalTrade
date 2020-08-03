@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fedc29e0-4b58-4908-9a56-f583aa5dbd7e" name="Default Changelist" comment="完成了供应商的查询，加入黑名单，调整供应商类别，该写供应商审核">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/ProducerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/impl/producerSerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/producerDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/entity/producerCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/producerCheckDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/producerCheckList.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/controller/producerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/controller/producerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/dao/producerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/dao/producerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/ProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/ProducerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/impl/producerSerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/impl/producerSerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/producerDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/producerDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/producerList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/producerList.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/producer/controller/producerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/producer/controller/producerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/producer/dao/producerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/producer/dao/producerDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/producerList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/producerList.html" afterDir="false" />
@@ -91,6 +92,7 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Ideaprogram\CoalTrade\src\main\resources\templates" />
+      <recent name="D:\Ideaprogram\CoalTrade\src\main\resources\static\assets\css" />
       <recent name="D:\Ideaprogram\CoalTrade\src\main\resources" />
       <recent name="D:\Ideaprogram\CoalTrade\src\main\resources\static" />
     </key>
@@ -144,7 +146,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test.testSelect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="test.testInsertProducerCheck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CoalTrade" />
       <extension name="coverage">
         <pattern>
@@ -154,7 +156,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.demo" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.test" />
-      <option name="METHOD_NAME" value="testSelect" />
+      <option name="METHOD_NAME" value="testInsertProducerCheck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test.testUpdateProducerState" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CoalTrade" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.test" />
+      <option name="METHOD_NAME" value="testUpdateProducerState" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -169,10 +187,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.test.testUpdateProducerState" />
+        <item itemvalue="JUnit.test.testInsertProducerCheck" />
         <item itemvalue="JUnit.test.testAddBlack" />
         <item itemvalue="JUnit.test.testGetProducerCheck" />
         <item itemvalue="JUnit.test.testGetAllProducer" />
-        <item itemvalue="JUnit.test.testSelect" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +224,10 @@
       <workItem from="1596013162827" duration="3173000" />
       <workItem from="1596089691851" duration="6750000" />
       <workItem from="1596161629631" duration="25738000" />
-      <workItem from="1596253094708" duration="1306000" />
+      <workItem from="1596253094708" duration="8875000" />
+      <workItem from="1596270879593" duration="4847000" />
+      <workItem from="1596359831131" duration="1924000" />
+      <workItem from="1596419360968" duration="4480000" />
     </task>
     <task id="LOCAL-00001" summary="提交commit测试">
       <created>1596096952713</created>
@@ -214,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596096952713</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成了供应商的查询，加入黑名单，调整供应商类别，该写供应商审核">
+      <created>1596254466311</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596254466311</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,18 +256,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="完成了供应商的查询，加入黑名单，调整供应商类别，该写供应商审核" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1596198422224">
+    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1596421092093">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1596198422224" />
+    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1596421092093" />
     <state x="431" y="342" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1595929215606">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="431" y="342" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.834@0.0.1536.834" timestamp="1595929215606" />
-    <state x="262" y="11" key="CommitChangelistDialog2" timestamp="1596254271951">
+    <state x="262" y="11" key="CommitChangelistDialog2" timestamp="1596420214752">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="262" y="11" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1596254271951" />
+    <state x="262" y="11" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1596420214752" />
     <state x="637" y="308" width="272" height="218" key="Github.ShareDialog" timestamp="1596089740999">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -247,38 +276,38 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="500" y="122" key="Github.UntrackedFilesDialog/0.0.1536.834@0.0.1536.834" timestamp="1596089764427" />
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1596424843791">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596424843791" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1596424843790">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1596424843790" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1596424843790">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1596424843790" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1596424843791">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
-    <state width="1493" height="213" key="GridCell.Tab.1.bottom" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1596424843791" />
+    <state width="1493" height="213" key="GridCell.Tab.1.bottom" timestamp="1596424843791">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
-    <state width="1493" height="213" key="GridCell.Tab.1.center" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596424843791" />
+    <state width="1493" height="213" key="GridCell.Tab.1.center" timestamp="1596424843791">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
-    <state width="1493" height="213" key="GridCell.Tab.1.left" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1596424843791" />
+    <state width="1493" height="213" key="GridCell.Tab.1.left" timestamp="1596424843791">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
-    <state width="1493" height="213" key="GridCell.Tab.1.right" timestamp="1596254272050">
+    <state width="1493" height="213" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1596424843791" />
+    <state width="1493" height="213" key="GridCell.Tab.1.right" timestamp="1596424843791">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1596254272050" />
+    <state width="1493" height="213" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1596424843791" />
     <state width="1493" height="265" key="GridCell.Tab.2.bottom" timestamp="1596178170821">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -299,24 +328,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="270" y="59" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1596013137615" />
-    <state x="449" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1596253742078">
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1596254510409">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="449" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1596253742078" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1596254510409" />
+    <state x="449" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1596419374709">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="449" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1596419374709" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1596175311909">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1596175311909" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/demo/test.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

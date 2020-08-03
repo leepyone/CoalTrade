@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
         <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
         <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">  
         <title>国电煤炭</title>
     </head>
     <style type="text/css">
@@ -177,7 +177,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-md-3">
                                             <label >供应商类型:</label>
                                             <label th:text="${producerType}">xxx</label>
@@ -187,7 +187,7 @@
                                             <label th:if="${producer.getBlack()==1}">在黑名单</label>
                                             <label th:if="${producer.getBlack()==0}">不在黑名单</label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     
                                     
                                 </div>
@@ -268,7 +268,8 @@
                     </div>
 
                 </div>
-                <div class="row cm-fix-height">
+                <!-- 审核记录的panel -->
+                <!-- <div class="row cm-fix-height">
                     <div class="col-sm-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">审核记录</div>
@@ -299,30 +300,56 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
                 <div class="row cm-fix-height">
                     <div class="col-sm-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">操作</div>
                             <div class="panel-body">
-                            <div class="col-sm-2 col-sm-offset-4" >
+                            <!-- <div class="col-sm-2 col-sm-offset-4" >
                                 <a type="button" th:href="@{'/addBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==0}">加入黑名单</a>
                                 <a type="button" th:href="@{'/removeBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==1}">移除黑名单</a>
 
-                            </div>
-                             <form action="/updateProducerType" >
-                                <div class="col-sm-2 col-sm-offset-0">
-                                    <input type="hidden" name="producerId" th:value="${producer.getProducerId()}">
-                                    <select class="form-control" name="newType">
-                                        <option value="1" th:text="${producerType}" hidden>--请选择--</option>
-                                        <option value="0">重点供应商</option>
-                                        <option value="1">内部供应商</option>
-                                        <option value="2">一般供应商</option>
-                                        <option value="3">临时供应商</option>
-                                    </select>
+                            </div> -->
+                             <form id="producerCheck" action="" >
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <label>审核意见</label>
+                                        <textarea class="form-control " name="remark" placeholder="审核意见" rows="5" ></textarea>
+                                    </div>
                                 </div>
-                                <div class="col-sm-1" ><button type="submit" class="btn btn-success">调整供应商类别</button></div>
-
+                                <br>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <label>供应商类型</label>
+                                        <input type="hidden" name="producerId" th:value="${producer.getProducerId()}">
+                                        <select class="form-control" name="producerType">
+                                            <option value="1"  hidden>--请选择供应商类型--</option>
+                                            <option value="0">重点供应商</option>
+                                            <option value="1">内部供应商</option>
+                                            <option value="2">一般供应商</option>
+                                            <option value="3">临时供应商</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-2 col-md-offset-3" >
+                                        <button  class="btn btn-lg btn-danger" onclick="failCheck()">驳回</button>
+                                    </div>
+                                    <div class="col-md-2 col-md-offset-0" >
+                                        <button  class="btn btn-lg btn-success" onclick="successCheck()">提交</button>
+                                    </div>
+                                    <div class="col-md-2 col-md-offset-0" >
+                                        <a href="/toProducerCheckList" class="btn btn-lg btn-primary">返回</a>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                            
                             </form>
                         </div>
                     </div>
@@ -339,5 +366,21 @@
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/clearmin.min.js"></script>
         <script src="assets/js/demo/home.js"></script>
+        <%--按钮逻辑控制--%>
+        <Script Language="JavaScript">
+            function successCheck()
+            {
+                var exportUrl = '/ProducerCheckSuccess';
+                $('#producerCheck').attr("action",exportUrl);
+                $('#producerCheck').submit();
+            }
+
+            function failCheck()
+            {
+                var exportUrl = '/ProducerCheckFail';
+                $('#producerCheck').attr("action",exportUrl);
+                $('#producerCheck').submit();
+            }
+        </Script>
     </body>
 </html>

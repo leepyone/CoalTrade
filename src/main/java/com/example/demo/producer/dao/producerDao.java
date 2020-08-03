@@ -2,6 +2,7 @@ package com.example.demo.producer.dao;
 
 
 import com.example.demo.producer.entity.producer;
+import com.example.demo.producer.entity.producerCheck;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -33,7 +34,15 @@ public interface producerDao {
 
     @Update("update  producer set black=1 where producer_id = #{id} ")
     boolean addBlack(int id);
+    @Update("update  producer set black=0 where producer_id = #{id} ")
+    boolean removeBlack(int id);
 
     @Update("update  producer set producer_type=#{newType} where producer_id = #{id}")
     boolean updateType(int newType,int id);
+
+    @Insert("insert into producer_check(`producer_id`,`check_date`,`checkperson_id`,`check_state`,`remark`) values( #{producerId},#{checkDate},#{checkpersonId},#{checkState},#{remark})")
+    boolean insertProducerCheck(producerCheck producerCheck);
+
+    @Update("update  producer set register_state=#{state} where producer_id = #{id}")
+    boolean updatProducerState(int state,int id);
 }
