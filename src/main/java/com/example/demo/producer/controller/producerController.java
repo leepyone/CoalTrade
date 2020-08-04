@@ -2,6 +2,7 @@ package com.example.demo.producer.controller;
 
 
 import com.example.demo.producer.dao.producerDao;
+import com.example.demo.producer.entity.annualScore;
 import com.example.demo.producer.entity.producer;
 import com.example.demo.producer.entity.producerCheck;
 import com.example.demo.producer.service.ProducerService;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class producerController {
@@ -55,7 +54,7 @@ public class producerController {
 //        获取供应商对象
         producer producer = producerService.getProducerById(Integer.parseInt(id.trim()));
 //        获取供应商审核记录
-        Map<String, String> producerCheck = producerService.getProducerCheck(Integer.parseInt(id.trim()));
+        List<Map<String, String>> producerCheck = producerService.getProducerCheck(Integer.parseInt(id.trim()));
 
 //        System.out.println(producerCheck);
         map.put("loginUser",loginUser);
@@ -128,6 +127,7 @@ public class producerController {
     public String failProducerCheck( HttpSession httpSession,String type,String remark,String  producerId){
         User loginUser = (User)httpSession.getAttribute("loginUser");
         producerCheck producerCheck = new producerCheck();
+        producerCheck.setRemark(remark);
         producerCheck.setProducerId(Integer.parseInt(producerId.trim()));
         producerCheck.setCheckpersonId(loginUser.getUserId());
         producerCheck.setCheckState(3);
@@ -140,7 +140,43 @@ public class producerController {
         producerService.updateProducerState(3,producerCheck.getProducerId());
         return "redirect:/toProducerCheckList";
     }
+    @RequestMapping("/toAnnualScores")
+    public String toAnnualScores(Map map,HttpSession httpSession){
+        List<annualScore> allAnnualScores = producerService.getAllAnnualScores();
+        User loginUser = (User)httpSession.getAttribute("loginUser");
+        List<Map<String ,String>> AllAnnualScores = producerService.getAnnualsScores();
 
+        map.put("annualScores",AllAnnualScores);
+        map.put("loginUser",loginUser);
+        return "Score";
+    }
 
+    @RequestMapping("/ScoreFilter")
+    public String ScoreFilter(String year,String producerName,Map map,HttpSession httpSession){
+        User loginUser = (User)httpSession.getAttribute("loginUser");
+        List<Map<String ,String>> AllAnnualScores = producerService.getAnnualsScores();
+        List<Map<String ,String>> newAllAnnualScores = new ArrayList<>();
+        if(!year.isEmpty()&&!producerName.isEmpty())
+            for(Map<String ,String> newMap:AllAnnualScores){
+                if(newMap.get("year").equals(year)&&newMap.get("producer_name").equals(producerName))
+                    newAllAnnualScores.add(newMap);
+            }
+        else if(year.isEmpty()&&!producerName.isEmpty())
+            for(Map<String ,String> newMap:AllAnnualScores){
+                if(newMap.get("producer_name").equals(producerName))
+                    newAllAnnualScores.add(newMap);
+            }
+        else if(!year.isEmpty()&&producerName.isEmpty())
+            for(Map<String ,String> newMap:AllAnnualScores){
+                String thisYear = newMap.get("year");
+                if(thisYear.equals(year.trim()))
+                    newAllAnnualScores.add(newMap);
+            }
+        else
+            newAllAnnualScores = AllAnnualScores;
+        map.put("annualScores",newAllAnnualScores);
+        map.put("loginUser",loginUser);
+        return "Score";
+    }
 
 }

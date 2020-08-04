@@ -52,8 +52,8 @@
                                 <ul>
                                     <li class="active" ><a href="/toProducerList">供应商列表</a></li>
                                     <li><a href="/toProducerCheckList">供应商审核</a></li>
-                                    <li><a href="#">月度评分</a></li>
-                                    <li><a href="#">年度评分</a></li>
+<!--                                    <li><a href="#">月度评分</a></li>-->
+                                    <li><a href="/toAnnualScores">年度评分</a></li>
                                 </ul>
                             </li>
                             <li class="cm-submenu">
@@ -65,7 +65,7 @@
                                 </ul>
                             </li>
                             <li class="cm-submenu">
-                                <a class=" sf-notepad">长协交易<span class="caret"></span></a>
+                                <a class=" sf-notepad">资讯中心<span class="caret"></span></a>
                                 <ul>
                                     <li><a href="#">二级标题</a></li>
                                     <li><a href="#">二级标题</a></li>
@@ -285,12 +285,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:if="${producerCheck!=null}">
-                                            <th scope="row" th:text="${producerCheck['check_id']}">1</th>
-                                            <td th:text="${producerCheck['producer_name']}">飞腾有限公司</td>
-                                            <td th:text="${producerCheck['user_name']}">小白</td>
-                                            <td th:text="${producerCheck['check_date']}">2020年7月30日</td>
-                                            <td th:text="${producerCheck['check_state']}">通过</td>
+                                    <tr th:each="map,mapStat:${producerCheck}">
+<!--                                        <tr th:if="${producerCheck!=null}">-->
+                                            <th scope="row" th:text="${map['check_id']}">1</th>
+                                            <td th:text="${map['producer_name']}">飞腾有限公司</td>
+                                            <td th:text="${map['user_name']}">小白</td>
+                                            <td th:text="${map['check_date']}">2020年7月30日</td>
+<!--                                            <td th:text="${map['check_state']}">通过</td>-->
+                                            <div th:switch="${map['check_state']}">
+                                                <!--                                                <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
+                                                <td th:case="'0'">待审核</td>
+                                                <td th:case="'1'">审核中</td>
+                                                <td th:case="'2'">审核通过</td>
+                                                <td th:case="'3'">审核驳回</td>
+                                            </div>
                                         </tr>
                                        
                                     </tbody>
@@ -305,26 +313,28 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">操作</div>
                             <div class="panel-body">
-                            <div class="col-sm-2 col-sm-offset-4" >
-                                <a type="button" th:href="@{'/addBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==0}">加入黑名单</a>
-                                <a type="button" th:href="@{'/removeBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==1}">移除黑名单</a>
 
-                            </div>
-                             <form action="/updateProducerType" >
-                                <div class="col-sm-2 col-sm-offset-0">
-                                    <input type="hidden" name="producerId" th:value="${producer.getProducerId()}">
-                                    <select class="form-control" name="newType">
-                                        <option value="1" th:text="${producerType}" hidden>--请选择--</option>
-                                        <option value="0">重点供应商</option>
-                                        <option value="1">内部供应商</option>
-                                        <option value="2">一般供应商</option>
-                                        <option value="3">临时供应商</option>
-                                    </select>
+
+                                <div class="col-sm-2 col-sm-offset-2" >
+                                    <a type="button" th:href="@{'/addBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==0}">加入黑名单</a>
+                                    <a type="button" th:href="@{'/removeBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==1}">移除黑名单</a>
+
                                 </div>
-                                <div class="col-sm-1" ><button type="submit" class="btn btn-success">调整供应商类别</button></div>
-
-                            </form>
-                        </div>
+                                 <form action="/updateProducerType" >
+                                    <div class="col-sm-2 col-sm-offset-0">
+                                        <input type="hidden" name="producerId" th:value="${producer.getProducerId()}">
+                                        <select class="form-control" name="newType">
+                                            <option value="1" th:text="${producerType}" hidden>--请选择--</option>
+                                            <option value="0">重点供应商</option>
+                                            <option value="1">内部供应商</option>
+                                            <option value="2">一般供应商</option>
+                                            <option value="3">临时供应商</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1" ><button type="submit" class="btn btn-success">调整供应商类别</button></div>
+                                </form>
+                                <div class="col-sm-2 col-sm-offset-2"><a href="/toProducerList" class="btn  btn-primary">返回</a></div>
+                            </div>
                     </div>
 
                 </div>

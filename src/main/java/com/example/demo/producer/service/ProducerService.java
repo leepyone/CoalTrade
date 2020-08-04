@@ -1,5 +1,6 @@
 package com.example.demo.producer.service;
 
+import com.example.demo.producer.entity.annualScore;
 import com.example.demo.producer.entity.producer;
 import com.example.demo.producer.entity.producerCheck;
 
@@ -32,7 +33,7 @@ public interface ProducerService {
      * @param id
      * @return
      */
-    Map<String,String> getProducerCheck(int id);
+    List<Map<String,String>> getProducerCheck(int id);
 
     /***
      * 将该供应商的type转化成字符串
@@ -84,5 +85,17 @@ public interface ProducerService {
      * @return
      */
     boolean updateProducerState(int state,int id );
+
+    /***
+     * 获取所有的年度评分结果
+     * @return
+     */
+    List<annualScore> getAllAnnualScores();
+
+    /**
+     * 多表查询，查询所有供应商的年度评分结果
+     * @return
+     */
+    List<Map<String,String>> getAnnualsScores();
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -23,16 +23,16 @@
     <body class="cm-no-transition cm-1-navbar">
         <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-primary">
-                <div class="cm-flex upLogo"><a href="#"><img src="./assets/img/logo.png"/></a></div>
+                <div class="cm-flex upLogo"><a href="#"><img src="assets/img/logo.png"/></a></div>
                 <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
             </nav>
             <div id="cm-menu-content">
                 <div id="cm-menu-items-wrapper">
                     <div id="cm-menu-scroller">
                         <ul class="cm-menu-items">
-                            <li class=""><a  class="sf-house">主页</a></li>
+                            <li ><a href="" class="sf-house">主页</a></li>
                             <li class="cm-submenu" >
-                                <a class=" sf-file-excel">采购申请管理<span class="caret"></span></a>
+                                <a href="" class=" sf-file-excel">采购申请管理<span class="caret"></span></a>
                                 <ul>
                                     <li><a href="#">二级标题</a></li>
                                     <li><a href="#">二级标题</a></li>
@@ -40,20 +40,20 @@
                                 </ul>
                             </li>
                             <li class="cm-submenu">
-                                <a  class="sf-box">采购执行报批<span class="caret"></span></a>
+                                <a href="" class="sf-box">采购执行报批<span class="caret"></span></a>
                                 <ul>
                                     <li><a href="#">二级标题</a></li>
                                     <li><a href="#">二级标题</a></li>
                                     <li><a href="#">二级标题</a></li>
                                 </ul>
                             </li>
-                            <li class="cm-submenu  ">
-                                <a class="sf-window-layout  active">供应商管理 <span class="caret"></span></a>
+                            <li class="cm-submenu">
+                                <a class="sf-window-layout">供应商管理 <span class="caret"></span></a>
                                 <ul>
                                     <li><a href="/toProducerList">供应商列表</a></li>
-                                    <li class="active"><a href="/toProducerCheckList">供应商审核</a></li>
-<!--                                    <li><a href="#">月度评分</a></li>-->
-                                    <li><a href="/toAnnualScores">年度评分</a></li>
+                                    <li><a href="/toProducerCheckList">供应商审核</a></li>
+                                    <li class="active"><a href="/toAnnualScores">年度评分</a></li>
+<!--                                   <li><a href="#">月度评分</a></li>-->
                                 </ul>
                             </li>
                             <li class="cm-submenu">
@@ -91,7 +91,7 @@
                 <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
                     <h1>供应商管理</h1> 
-                    <form id="cm-search" action="index.html" method="get">
+                    <form id="cm-search" action="" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="Search...">
                     </form>
                 </div>
@@ -120,75 +120,66 @@
                 <div class="row cm-fix-height">
                     <div class="col-sm-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">供应商列表</div>
+                            <div class="panel-heading">供应商评分</div>
                             <div class="panel-body">
-                                <table class="table table-hover table-condensed" style="margin-bottom:0">
+                                <div class="col-md-12 ">
+                                    <form class=" form-inline" action="/ScoreFilter">
+                                        <div class=" form-group">
+                                          <label >供应商名称</label>
+                                          <input type="text" class="form-control" name="producerName" >
+                                        </div>
+
+                                        <div class=" form-group">
+                                          <label >年份</label>
+                                          <input type="text" class="form-control" name="year" >
+                                        </div>
+                                        <button type="submit" class="btn btn-default">查询</button>
+                                        
+                                    </form>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <table class="table table-hover" style="margin-bottom:0">
                                     <thead>
-                                        <tr >
+                                        <tr>
                                             <th>序号</th>
                                             <th>供应商名称</th>
-                                            <th>法人</th>
-                                            <th>机构代码</th>
-                                            <th>联系电话</th>
-                                            <th>供应商类型</th>
-                                            <th>审核状态</th>
+                                            <th>年度</th>
+                                            <th>供电厂评分</th>
+                                            <th>分公司评分</th>
+                                            <th>集团评分</th>
+                                            <th>评级</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr th:each="producer,producerStat:${checkProducers}">
-                                            <th scope="row" th:text="${producerStat.count}"><font size= 4>1</font></th>
-                                            <td th:text="${producer.getProducerName()}"><font size= 4>xxx公司</font></td>
-                                            <td th:text="${producer.getLegalPerson()}"><font size= 4>小明</font></td>
-                                            <td th:text="${producer.getProducerCode()}"><font size= 4>2656516jbhj</font></td>
-                                            <td th:text="${producer.getConnectNumber()}"><font size= 4>1679108504</font></td>
-<!--                                            <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
-                                            <div th:switch="${producer.getProducerType()}">
-                                                <!--                                                <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
-                                                <td th:case="'0'">重点供应商</td>
-                                                <td th:case="'1'">内部供应商</td>
-                                                <td th:case="'2'">一般供应商</td>
-                                                <td th:case="'3'">临时供应商</td>
-                                            </div>
-                                            <div th:switch="${producer.getRegisterState()}">
-                                                <!--                                                <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
-                                                <td th:case="'0'">待审核</td>
-                                                <td th:case="'1'">审核中</td>
-                                                <td th:case="'2'">审核通过</td>
-                                                <td th:case="'3'">审核驳回</td>
-                                            </div>
-                                            <td><a class="btn  btn-info"  th:href="@{'/toProducerCheckMes/'+${producer.getProducerId()}}">审核</a></td>
+                                    <tbody >
+                                        <tr th:each="map,annualSocreStat:${annualScores}">
+                                            <th scope="row" th:text="${annualSocreStat.count}">1</th>
+                                            <td th:text="${map['producer_name']}">xxx</td>
+                                            <td th:text="${map['year']}">2020</td>
+                                            <td th:text="${map['f_score']}">2020</td>
+                                            <td th:text="${map['p_score']}">2020</td>
+                                            <td th:text="${map['c_score']}">2020</td>
+                                            <td th:text="${map['level']}"> A</td>
+                                            <td>查看</td>
                                         </tr>
+
                                     </tbody>
                                 </table> 
                             </div>
-                            
                         </div>
                     </div>
-                   
+                    <!-- <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">paragraphs</div>
+                            <div class="panel-body">
+                                
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
-                <!-- <div class="col-sm-6 col-offser"><form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-                </div> -->
+                
                 <!-- <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
@@ -232,11 +223,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div> -->
+                </div> -->
+            </div>
             <footer class="cm-footer"><span class="pull-left">Connected as Sure</span><span class="pull-right">&copy; PAOMEDIA SARL</span></footer>
         </div>
-        
+
         <script src="assets/js/lib/jquery.min.js"></script>
         <script src="assets/js/jquery.mousewheel.min.js"></script>
         <script src="assets/js/jquery.cookie.min.js"></script>

@@ -37,8 +37,8 @@ public class test {
     }
     @Test
     public void testGetProducerCheck(){
-        Map<String, String> producerCheck = producerDao.getProducerCheck(1);
-        System.out.println(producerCheck);
+//        Map<String, String> producerCheck = producerDao.getProducerCheck(1);
+//        System.out.println(producerCheck);
     }
     @Test
     public void testAddBlack(){
@@ -57,7 +57,7 @@ public class test {
         producerCheck.setCheckState(0);
         producerCheck.setProducerId(1);
         boolean b = producerDao.insertProducerCheck(producerCheck);
-        System.out.println(b);
+        System.out.println(producerCheck.getCheckId());
     }
 
     @Test

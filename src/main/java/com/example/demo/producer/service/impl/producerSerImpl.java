@@ -1,6 +1,7 @@
 package com.example.demo.producer.service.impl;
 
 import com.example.demo.producer.dao.producerDao;
+import com.example.demo.producer.entity.annualScore;
 import com.example.demo.producer.entity.producer;
 import com.example.demo.producer.entity.producerCheck;
 import com.example.demo.producer.service.ProducerService;
@@ -41,22 +42,22 @@ public class producerSerImpl implements ProducerService {
     }
 
     @Override
-    public Map<String, String> getProducerCheck(int id) {
-        Map<String, String> producerCheck =producerDao.getProducerCheck(id);
+    public List<Map<String, String>> getProducerCheck(int id) {
+        List<Map<String, String>> producerCheck =producerDao.getProducerCheck(id);
         if(producerCheck==null) {
             System.out.println("没有记录");
             return null;
         }
-        String state=  String.valueOf(producerCheck.get("check_state")).trim();
-
-        if(state.equals("0"))
-            producerCheck.put("check_state","待审核") ;
-        else if (state.equals("1"))
-            producerCheck.put("check_state","审核中") ;
-        else if (state.equals("2"))
-            producerCheck.put("check_state","审核通过") ;
-        else if(state.equals("3"))
-            producerCheck.put("check_state","驳回") ;
+//        String state=  String.valueOf(producerCheck.get("check_state")).trim();
+//
+//        if(state.equals("0"))
+//            producerCheck.put("check_state","待审核") ;
+//        else if (state.equals("1"))
+//            producerCheck.put("check_state","审核中") ;
+//        else if (state.equals("2"))
+//            producerCheck.put("check_state","审核通过") ;
+//        else if(state.equals("3"))
+//            producerCheck.put("check_state","驳回") ;
 
         return producerCheck;
     }
@@ -98,6 +99,16 @@ public class producerSerImpl implements ProducerService {
     @Override
     public boolean updateProducerState(int state, int id) {
         return producerDao.updatProducerState(state,id);
+    }
+
+    @Override
+    public List<annualScore> getAllAnnualScores() {
+        return producerDao.getAllAnnualScores();
+    }
+
+    @Override
+    public List<Map<String, String>> getAnnualsScores() {
+        return producerDao.getAnnualScores();
     }
 
 //    @Override
