@@ -63,7 +63,7 @@ public class test {
     @Test
     public void  testUpdateProducerState(){
 
-        producerDao.updatProducerState(2,5);
+        producerDao.updateProducerState(2,5);
 
     }
 }

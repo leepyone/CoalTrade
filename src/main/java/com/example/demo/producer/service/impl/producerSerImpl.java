@@ -98,7 +98,7 @@ public class producerSerImpl implements ProducerService {
 
     @Override
     public boolean updateProducerState(int state, int id) {
-        return producerDao.updatProducerState(state,id);
+        return producerDao.updateProducerState(state,id);
     }
 
     @Override

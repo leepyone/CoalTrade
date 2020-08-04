@@ -46,7 +46,7 @@ public interface producerDao {
     boolean insertProducerCheck(producerCheck producerCheck);
 
     @Update("update  producer set register_state=#{state} where producer_id = #{id}")
-    boolean updatProducerState(int state,int id);
+    boolean updateProducerState(int state,int id);
 
     @Select("select * from annual_score")
     List<annualScore> getAllAnnualScores();

@@ -50,10 +50,10 @@
                             <li class="cm-submenu  ">
                                 <a class="sf-window-layout  active">供应商管理 <span class="caret"></span></a>
                                 <ul>
-                                    <li><a href="/toProducerList">供应商列表</a></li>
-                                    <li class="active"><a href="/toProducerCheckList">供应商审核</a></li>
+                                    <li><a href="/producer/toProducerList">供应商列表</a></li>
+                                    <li class="active"><a href="/producer/toProducerCheckList">供应商审核</a></li>
 <!--                                    <li><a href="#">月度评分</a></li>-->
-                                    <li><a href="/toAnnualScores">年度评分</a></li>
+                                    <li><a href="/producer/toAnnualScores">年度评分</a></li>
                                 </ul>
                             </li>
                             <li class="cm-submenu">
@@ -122,6 +122,16 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">供应商列表</div>
                             <div class="panel-body">
+                                <div class="col-md-12 ">
+                                    <form class=" form-inline" action="/producer/toFilterProducerList">
+                                        <div class=" form-group">
+                                            <label >供应商名称</label>
+                                            <input type="text" class="form-control" name="producerName" >
+                                        </div>
+                                        <button type="submit" class="btn btn-default">查询</button>
+
+                                    </form>
+                                </div>
                                 <table class="table table-hover table-condensed" style="margin-bottom:0">
                                     <thead>
                                         <tr >
@@ -157,7 +167,7 @@
                                                 <td th:case="'2'">审核通过</td>
                                                 <td th:case="'3'">审核驳回</td>
                                             </div>
-                                            <td><a class="btn  btn-info"  th:href="@{'/toProducerCheckMes/'+${producer.getProducerId()}}">审核</a></td>
+                                            <td><a class="btn  btn-info"  th:href="@{'/producer/toProducerCheckMes/'+${producer.getProducerId()}}">审核</a></td>
                                         </tr>
                                     </tbody>
                                 </table> 

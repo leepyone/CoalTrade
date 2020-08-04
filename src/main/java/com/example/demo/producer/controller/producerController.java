@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
+@RequestMapping("/producer")
 public class producerController {
 
 //    private  static final Logger logger= Logger.getLogger(producerController.class);
@@ -36,6 +37,23 @@ public class producerController {
         map.put("allProducer",allProducer);;
         return "producerList";
     }
+    @RequestMapping("/toFilterProducerList")
+    public String toProducerListFilter(Map map , HttpSession httpSession,String producerName){
+        List<producer> allProducer = producerService.getAllProducer();
+        User loginUser = (User)httpSession.getAttribute("loginUser");
+
+        List<producer> newProducers = new ArrayList<>();
+        if(producerName.isEmpty())
+            newProducers = allProducer;
+        else
+            for(producer producer:allProducer)
+                if(producer.getProducerName().equals(producerName))
+                    newProducers.add(producer);
+        map.put("loginUser",loginUser);
+
+        map.put("allProducer",newProducers);;
+        return "producerList";
+    }
 
     @RequestMapping("/toProducerCheckList")
     public String toProducerCheckList(Map map , HttpSession httpSession){
@@ -44,6 +62,21 @@ public class producerController {
 //        logger.info(loginUser);
         map.put("loginUser",loginUser);
         map.put("checkProducers",checkProducers);;
+        return "producerCheckList";
+    }
+    @RequestMapping("/toProducerFilterCheckList")
+    public String toProducerFilterCheckList(Map map , HttpSession httpSession,String producerName){
+        List<producer> checkProducers = producerService.getCheckProducers();
+        User loginUser = (User)httpSession.getAttribute("loginUser");
+        List<producer> newProducers = new ArrayList<>();
+        if(producerName.isEmpty())
+            newProducers = checkProducers;
+        else
+            for(producer producer:checkProducers)
+                if(producer.getProducerName().equals(producerName))
+                    newProducers.add(producer);
+        map.put("loginUser",loginUser);
+        map.put("checkProducers",newProducers);;
         return "producerCheckList";
     }
 
@@ -83,18 +116,18 @@ public class producerController {
     public String addBlack(@PathVariable(name="id") String id ){
 
         producerService.addBlack(Integer.parseInt(id.trim()));
-        return "redirect:/toProducerList";
+        return "redirect:/producer/toProducerList";
     }
     @RequestMapping("/removeBlack/{id}")
     public String removeBlack(@PathVariable(name="id") String id ){
         producerService.removeBlack(Integer.parseInt(id.trim()));
-        return "redirect:/toProducerList";
+        return "redirect:/producer/toProducerList";
     }
     @RequestMapping("/updateProducerType")
     public String updateProducerType(String newType,String producerId){
         producerService.updateProducerType(Integer.parseInt(newType.trim()),Integer.parseInt(producerId.trim()));
 //        System.out.println(newType);
-        return "redirect:/toProducerList";
+        return "redirect:/producer/toProducerList";
     }
 
     /**
@@ -107,6 +140,8 @@ public class producerController {
      */
     @RequestMapping("/ProducerCheckSuccess")
     public String addProducerCheck( HttpSession httpSession,String type,String remark,String  producerId){
+        if(type.isEmpty())
+            type=String.valueOf(3);
         User loginUser = (User)httpSession.getAttribute("loginUser");
         producerCheck producerCheck = new producerCheck();
         producerCheck.setProducerId(Integer.parseInt(producerId.trim()));
@@ -121,7 +156,7 @@ public class producerController {
         producerService.updateProducerState(2,producerCheck.getProducerId());
 //        更改供应商的类型
         producerService.updateProducerType(Integer.parseInt(type.trim()),producerCheck.getProducerId());
-        return "redirect:/toProducerCheckList";
+        return "redirect:/producer/toProducerCheckList";
     }
     @RequestMapping("/ProducerCheckFail")
     public String failProducerCheck( HttpSession httpSession,String type,String remark,String  producerId){
@@ -138,7 +173,7 @@ public class producerController {
         producerService.insertProducerCheck(producerCheck);
 //        并将该供应商的改为审核驳回
         producerService.updateProducerState(3,producerCheck.getProducerId());
-        return "redirect:/toProducerCheckList";
+        return "redirect:/producer/toProducerCheckList";
     }
     @RequestMapping("/toAnnualScores")
     public String toAnnualScores(Map map,HttpSession httpSession){

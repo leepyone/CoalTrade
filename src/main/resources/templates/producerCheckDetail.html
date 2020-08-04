@@ -50,10 +50,10 @@
                             <li class="cm-submenu  ">
                                 <a class="sf-window-layout  active">供应商管理 <span class="caret"></span></a>
                                 <ul>
-                                    <li class="active" ><a href="/toProducerList">供应商列表</a></li>
-                                    <li><a href="/toProducerCheckList">供应商审核</a></li>
+                                    <li class="active" ><a href="/producer/toProducerList">供应商列表</a></li>
+                                    <li><a href="/producer/toProducerCheckList">供应商审核</a></li>
 <!--                                    <li><a href="#">月度评分</a></li>-->
-                                    <li><a href="/toAnnualScores">年度评分</a></li>
+                                    <li><a href="/producer/toAnnualScores">年度评分</a></li>
                                 </ul>
                             </li>
                             <li class="cm-submenu">
@@ -343,7 +343,7 @@
                                         <button  class="btn btn-lg btn-success" onclick="successCheck()">提交</button>
                                     </div>
                                     <div class="col-md-2 col-md-offset-0" >
-                                        <a href="/toProducerCheckList" class="btn btn-lg btn-primary">返回</a>
+                                        <a href="/producer/toProducerCheckList" class="btn btn-lg btn-primary">返回</a>
                                     </div>
                                 </div>
                                 
@@ -370,14 +370,14 @@
         <Script Language="JavaScript">
             function successCheck()
             {
-                var exportUrl = '/ProducerCheckSuccess';
+                var exportUrl = '/producer/ProducerCheckSuccess';
                 $('#producerCheck').attr("action",exportUrl);
                 $('#producerCheck').submit();
             }
 
             function failCheck()
             {
-                var exportUrl = '/ProducerCheckFail';
+                var exportUrl = '/producer/ProducerCheckFail';
                 $('#producerCheck').attr("action",exportUrl);
                 $('#producerCheck').submit();
             }

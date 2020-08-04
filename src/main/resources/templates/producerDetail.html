@@ -50,10 +50,10 @@
                             <li class="cm-submenu  ">
                                 <a class="sf-window-layout  active">供应商管理 <span class="caret"></span></a>
                                 <ul>
-                                    <li class="active" ><a href="/toProducerList">供应商列表</a></li>
-                                    <li><a href="/toProducerCheckList">供应商审核</a></li>
+                                    <li class="active" ><a href="/producer/toProducerList">供应商列表</a></li>
+                                    <li><a href="/producer/toProducerCheckList">供应商审核</a></li>
 <!--                                    <li><a href="#">月度评分</a></li>-->
-                                    <li><a href="/toAnnualScores">年度评分</a></li>
+                                    <li><a href="/producer/toAnnualScores">年度评分</a></li>
                                 </ul>
                             </li>
                             <li class="cm-submenu">
@@ -316,11 +316,11 @@
 
 
                                 <div class="col-sm-2 col-sm-offset-2" >
-                                    <a type="button" th:href="@{'/addBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==0}">加入黑名单</a>
-                                    <a type="button" th:href="@{'/removeBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==1}">移除黑名单</a>
+                                    <a type="button" th:href="@{'/producer/addBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==0}">加入黑名单</a>
+                                    <a type="button" th:href="@{'/producer/removeBlack/'+${producer.getProducerId()}}" class="btn btn-danger" th:if="${producer.getBlack()==1}">移除黑名单</a>
 
                                 </div>
-                                 <form action="/updateProducerType" >
+                                 <form action="/producer/updateProducerType" >
                                     <div class="col-sm-2 col-sm-offset-0">
                                         <input type="hidden" name="producerId" th:value="${producer.getProducerId()}">
                                         <select class="form-control" name="newType">
@@ -333,7 +333,7 @@
                                     </div>
                                     <div class="col-sm-1" ><button type="submit" class="btn btn-success">调整供应商类别</button></div>
                                 </form>
-                                <div class="col-sm-2 col-sm-offset-2"><a href="/toProducerList" class="btn  btn-primary">返回</a></div>
+                                <div class="col-sm-2 col-sm-offset-2"><a href="/producer/toProducerList" class="btn  btn-primary">返回</a></div>
                             </div>
                     </div>
 

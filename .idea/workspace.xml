@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fedc29e0-4b58-4908-9a56-f583aa5dbd7e" name="Default Changelist" comment="年度评分的查询完成，链接也调整好了。完成分页">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/entity/annualScore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Score.html" afterDir="false" />
+    <list default="true" id="fedc29e0-4b58-4908-9a56-f583aa5dbd7e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/controller/producerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/controller/producerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/dao/producerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/dao/producerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/ProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/ProducerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/impl/producerSerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/producer/service/impl/producerSerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Score.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Score.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/producerCheckDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/producerCheckDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/producerCheckList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/producerCheckList.html" afterDir="false" />
@@ -87,6 +85,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -193,8 +194,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.test.testInsertProducerCheck" />
         <item itemvalue="JUnit.test.testUpdateProducerState" />
+        <item itemvalue="JUnit.test.testInsertProducerCheck" />
         <item itemvalue="JUnit.test.testAddBlack" />
         <item itemvalue="JUnit.test.testGetProducerCheck" />
         <item itemvalue="JUnit.test.testGetAllProducer" />
@@ -235,7 +236,7 @@
       <workItem from="1596359831131" duration="1924000" />
       <workItem from="1596419360968" duration="12856000" />
       <workItem from="1596456272225" duration="8080000" />
-      <workItem from="1596508433676" duration="5133000" />
+      <workItem from="1596508433676" duration="9436000" />
     </task>
     <task id="LOCAL-00001" summary="提交commit测试">
       <created>1596096952713</created>
@@ -258,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596424984792</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="年度评分的查询完成，链接也调整好了。开始完成分页功能">
+      <created>1596524634037</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596524634037</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +288,8 @@
     <MESSAGE value="完成了供应商的查询，加入黑名单，调整供应商类别，该写供应商审核" />
     <MESSAGE value="供应商的审核完成了， 接下来修改一下主页，其他的的链接跳转" />
     <MESSAGE value="年度评分的查询完成，链接也调整好了。完成分页" />
-    <option name="LAST_COMMIT_MESSAGE" value="年度评分的查询完成，链接也调整好了。完成分页" />
+    <MESSAGE value="年度评分的查询完成，链接也调整好了。开始完成分页功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="年度评分的查询完成，链接也调整好了。开始完成分页功能" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1596464283390">
@@ -291,10 +300,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="431" y="342" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.834@0.0.1536.834" timestamp="1595929215606" />
-    <state x="262" y="11" key="CommitChangelistDialog2" timestamp="1596524532738">
+    <state x="262" y="11" key="CommitChangelistDialog2" timestamp="1596524628939">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="262" y="11" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1596524532738" />
+    <state x="262" y="11" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1596524628939" />
     <state x="637" y="308" width="272" height="218" key="Github.ShareDialog" timestamp="1596089740999">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -303,38 +312,38 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="500" y="122" key="Github.UntrackedFilesDialog/0.0.1536.834@0.0.1536.834" timestamp="1596089764427" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1596528373847">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596528373847" />
+    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1596528373846">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1596528373846" />
+    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1596528373845">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1596528373845" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1596528373846">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1596528373846" />
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1596528373848">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
-    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1596528373848" />
+    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1596528373847">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
-    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1596528373847" />
+    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1596528373847">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
-    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1596524532784">
+    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1596528373847" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1596528373848">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1596524532784" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1596528373848" />
     <state width="1493" height="265" key="GridCell.Tab.2.bottom" timestamp="1596522482402">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -351,18 +360,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="265" key="GridCell.Tab.2.right/0.0.1536.834@0.0.1536.834" timestamp="1596522482402" />
-    <state x="270" y="59" key="SettingsEditor" timestamp="1596013137615">
+    <state x="270" y="0" key="SettingsEditor" timestamp="1596526710651">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="270" y="59" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1596013137615" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1596424997207">
+    <state x="270" y="0" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1596526710651" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1596525156295">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1596424997207" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1596525156295" />
     <state x="449" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1596508434025">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="449" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1596508434025" />
+    <state x="425" y="189" key="run.anything.popup" timestamp="1596526715656">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1596526715656" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1596175311909">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -373,7 +386,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/producer/controller/producerController.java</url>
-          <line>61</line>
+          <line>94</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
