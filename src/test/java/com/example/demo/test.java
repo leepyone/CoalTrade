@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.producer.dao.producerDao;
 import com.example.demo.producer.entity.producer;
 import com.example.demo.producer.entity.producerCheck;
+import com.example.demo.producer.service.ProducerService;
 import com.example.demo.user.DAO.UserDao;
 import com.example.demo.user.entity.User;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,8 @@ public class test {
 
     @Autowired
     private producerDao producerDao;
+    @Autowired
+    private ProducerService producerService;
     @Test
     public void testSelect(){
         User user = userDao.getUserByAccount("1679");
@@ -66,4 +69,13 @@ public class test {
         producerDao.updateProducerState(2,5);
 
     }
+
+    @Test
+    public void testGetAllCheckProducer(){
+        List<producer> checkProducers = producerService.getCheckProducers();
+        System.out.println(checkProducers);
+
+    }
+
+
 }

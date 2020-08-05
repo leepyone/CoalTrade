@@ -9,10 +9,15 @@ import com.example.demo.producer.service.ProducerService;
 import com.example.demo.user.entity.User;
 
 //import org.apache.log4j.Logger;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.servlet.http.HttpSession;
@@ -22,21 +27,57 @@ import java.util.*;
 @RequestMapping("/producer")
 public class producerController {
 
-//    private  static final Logger logger= Logger.getLogger(producerController.class);
-//    @Autowired
-//    private producerDao producerDao;
     @Autowired
     private ProducerService producerService;
 
-    @RequestMapping("/toProducerList")
-    public String toProducerList(Map map , HttpSession httpSession){
-        List<producer> allProducer = producerService.getAllProducer();
+//    @RequestMapping("/toProducerList1")
+//    public String toProducerList(Map map , HttpSession httpSession){
+//        List<producer> allProducer = producerService.getAllProducer();
+//        User loginUser = (User)httpSession.getAttribute("loginUser");
+////        logger.info(loginUser);
+//        map.put("loginUser",loginUser);
+//        map.put("allProducer",allProducer);
+//        return "producerList";
+//    }
+    @GetMapping("/toProducerList")
+    public String allProducers(Model model,
+                               @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
+                               @RequestParam(defaultValue="2",value="pageSize")Integer pageSize,HttpSession httpSession){
+
+        //为了程序的严谨性，判断非空：
+        if(pageNum == null){
+            pageNum = 1;   //设置默认当前页
+        }
+        if(pageNum <= 0){
+            pageNum = 1;
+        }
+        if(pageSize == null){
+            pageSize = 5;    //设置默认每页显示的数据数
+        }
+        System.out.println("当前页是："+pageNum+"显示条数是："+pageSize);
+
+        //1.引入分页插件,pageNum是第几页，pageSize是每页显示多少条,默认查询总数count
+        PageHelper.startPage(pageNum,pageSize);
+        List<producer> producersList = producerService.getAllProducer();
+        //2.紧跟的查询就是一个分页查询-必须紧跟.后面的其他查询不会被分页，除非再次调用PageHelper.startPage
+        try {
+
+            System.out.println("分页数据："+producersList);
+            //3.使用PageInfo包装查询后的结果,5是连续显示的条数,结果list类型是Page<E>
+            PageInfo<producer> pageInfo = new PageInfo<producer>(producersList,pageSize);
+            //4.使用model/map/modelandview等带回前端
+            model.addAttribute("pageInfo",pageInfo);
+        }finally {
+            PageHelper.clearPage(); //清理 ThreadLocal 存储的分页参数,保证线程安全
+        }
+        model.addAttribute("allProducer",producersList);
         User loginUser = (User)httpSession.getAttribute("loginUser");
-//        logger.info(loginUser);
-        map.put("loginUser",loginUser);
-        map.put("allProducer",allProducer);;
+        model.addAttribute("loginUser",loginUser);
+        //5.设置返回的jsp/html等前端页面
+        // thymeleaf默认就会拼串classpath:/templates/xxxx.html
         return "producerList";
     }
+
     @RequestMapping("/toFilterProducerList")
     public String toProducerListFilter(Map map , HttpSession httpSession,String producerName){
         List<producer> allProducer = producerService.getAllProducer();
@@ -44,7 +85,7 @@ public class producerController {
 
         List<producer> newProducers = new ArrayList<>();
         if(producerName.isEmpty())
-            newProducers = allProducer;
+            return "redirect:/producer/toProducerList";
         else
             for(producer producer:allProducer)
                 if(producer.getProducerName().equals(producerName))
@@ -56,7 +97,7 @@ public class producerController {
     }
 
     @RequestMapping("/toProducerCheckList")
-    public String toProducerCheckList(Map map , HttpSession httpSession){
+    public String toProducerCheckList1(Map map , HttpSession httpSession){
         List<producer> checkProducers = producerService.getCheckProducers();
         User loginUser = (User)httpSession.getAttribute("loginUser");
 //        logger.info(loginUser);
@@ -64,13 +105,42 @@ public class producerController {
         map.put("checkProducers",checkProducers);;
         return "producerCheckList";
     }
+
+//    @GetMapping("/toProducerCheckList")
+//    public String toProducerCheckList(Model model,
+//                               @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
+//                               @RequestParam(defaultValue="1",value="pageSize")Integer pageSize,HttpSession httpSession){
+//        if(pageNum == null){
+//            pageNum = 1;
+//        }
+//        if(pageNum <= 0){
+//            pageNum = 1;
+//        }
+//        if(pageSize == null){
+//            pageSize = 5;
+//        }
+//        PageHelper.startPage(pageNum,pageSize);
+//        List<producer> checkProducers = producerService.getCheckProducers();
+////        List<producer> allProducer = producerService.getAllProducer();
+//        try {
+//            PageInfo<producer> pageInfo = new PageInfo<producer>(checkProducers,pageSize);
+//            model.addAttribute("pageInfo",pageInfo);
+//        }finally {
+//            PageHelper.clearPage(); //清理 ThreadLocal 存储的分页参数,保证线程安全
+//        }
+//        model.addAttribute("checkProducers",checkProducers);;
+//        User loginUser = (User)httpSession.getAttribute("loginUser");
+//        model.addAttribute("loginUser",loginUser);
+//        return "producerCheckList";
+//    }
+
     @RequestMapping("/toProducerFilterCheckList")
     public String toProducerFilterCheckList(Map map , HttpSession httpSession,String producerName){
         List<producer> checkProducers = producerService.getCheckProducers();
         User loginUser = (User)httpSession.getAttribute("loginUser");
         List<producer> newProducers = new ArrayList<>();
         if(producerName.isEmpty())
-            newProducers = checkProducers;
+            return "redirect:/producer/toProducerCheckList";
         else
             for(producer producer:checkProducers)
                 if(producer.getProducerName().equals(producerName))
@@ -112,6 +182,7 @@ public class producerController {
 //        map.put("producerCheck",producerCheck);
         return "producerCheckDetail";
     }
+
     @RequestMapping("/addBlack/{id}")
     public String addBlack(@PathVariable(name="id") String id ){
 
@@ -130,14 +201,7 @@ public class producerController {
         return "redirect:/producer/toProducerList";
     }
 
-    /**
-     * 审核通过 传入审核的供应商
-     * @param httpSession
-     * @param type
-     * @param remark
-     * @param producerId
-     * @return
-     */
+
     @RequestMapping("/ProducerCheckSuccess")
     public String addProducerCheck( HttpSession httpSession,String type,String remark,String  producerId){
         if(type.isEmpty())
@@ -175,18 +239,56 @@ public class producerController {
         producerService.updateProducerState(3,producerCheck.getProducerId());
         return "redirect:/producer/toProducerCheckList";
     }
-    @RequestMapping("/toAnnualScores")
-    public String toAnnualScores(Map map,HttpSession httpSession){
-        List<annualScore> allAnnualScores = producerService.getAllAnnualScores();
-        User loginUser = (User)httpSession.getAttribute("loginUser");
-        List<Map<String ,String>> AllAnnualScores = producerService.getAnnualsScores();
+//    @RequestMapping("/toAnnualScores")
+//    public String toAnnualScores1(Map map,HttpSession httpSession){
+//        List<annualScore> allAnnualScores = producerService.getAllAnnualScores();
+//        User loginUser = (User)httpSession.getAttribute("loginUser");
+//        List<Map<String ,String>> AllAnnualScores = producerService.getAnnualsScores();
+//
+//        map.put("annualScores",AllAnnualScores);
+//        map.put("loginUser",loginUser);
+//        return "Score";
+//    }
+    @GetMapping("/toAnnualScores")
+    public String toAnnualScores(Model model,
+                               @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
+                               @RequestParam(defaultValue="2",value="pageSize")Integer pageSize,HttpSession httpSession) {
 
-        map.put("annualScores",AllAnnualScores);
-        map.put("loginUser",loginUser);
+        //为了程序的严谨性，判断非空：
+        if (pageNum == null) {
+            pageNum = 1;   //设置默认当前页
+        }
+        if (pageNum <= 0) {
+            pageNum = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 5;    //设置默认每页显示的数据数
+        }
+//        System.out.println("当前页是："+pageNum+"显示条数是："+pageSize);
+
+        //1.引入分页插件,pageNum是第几页，pageSize是每页显示多少条,默认查询总数count
+        PageHelper.startPage(pageNum, pageSize);
+        List<Map<String ,String>> AllAnnualScores = producerService.getAnnualsScores();
+        //2.紧跟的查询就是一个分页查询-必须紧跟.后面的其他查询不会被分页，除非再次调用PageHelper.startPage
+        try {
+
+            System.out.println("分页数据：" + AllAnnualScores);
+            //3.使用PageInfo包装查询后的结果,5是连续显示的条数,结果list类型是Page<E>
+            PageInfo<Map<String ,String>> pageInfo = new PageInfo<Map<String ,String>>(AllAnnualScores, pageSize);
+            //4.使用model/map/modelandview等带回前端
+            model.addAttribute("pageInfo", pageInfo);
+        } finally {
+            PageHelper.clearPage(); //清理 ThreadLocal 存储的分页参数,保证线程安全
+        }
+        model.addAttribute("annualScores", AllAnnualScores);
+        User loginUser = (User) httpSession.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
+        //5.设置返回的jsp/html等前端页面
+        // thymeleaf默认就会拼串classpath:/templates/xxxx.html
         return "Score";
     }
 
-    @RequestMapping("/ScoreFilter")
+        @RequestMapping("/ScoreFilter")
     public String ScoreFilter(String year,String producerName,Map map,HttpSession httpSession){
         User loginUser = (User)httpSession.getAttribute("loginUser");
         List<Map<String ,String>> AllAnnualScores = producerService.getAnnualsScores();
@@ -208,10 +310,13 @@ public class producerController {
                     newAllAnnualScores.add(newMap);
             }
         else
-            newAllAnnualScores = AllAnnualScores;
+            return "redirect:/producer/toAnnualScores";
         map.put("annualScores",newAllAnnualScores);
         map.put("loginUser",loginUser);
         return "Score";
     }
+
+
+
 
 }

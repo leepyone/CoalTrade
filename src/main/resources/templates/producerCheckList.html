@@ -123,7 +123,7 @@
                             <div class="panel-heading">供应商列表</div>
                             <div class="panel-body">
                                 <div class="col-md-12 ">
-                                    <form class=" form-inline" action="/producer/toFilterProducerList">
+                                    <form class=" form-inline" action="/producer/toProducerFilterCheckList">
                                         <div class=" form-group">
                                             <label >供应商名称</label>
                                             <input type="text" class="form-control" name="producerName" >
@@ -152,7 +152,6 @@
                                             <td th:text="${producer.getLegalPerson()}"><font size= 4>小明</font></td>
                                             <td th:text="${producer.getProducerCode()}"><font size= 4>2656516jbhj</font></td>
                                             <td th:text="${producer.getConnectNumber()}"><font size= 4>1679108504</font></td>
-<!--                                            <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
                                             <div th:switch="${producer.getProducerType()}">
                                                 <!--                                                <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
                                                 <td th:case="'0'">重点供应商</td>
@@ -161,7 +160,6 @@
                                                 <td th:case="'3'">临时供应商</td>
                                             </div>
                                             <div th:switch="${producer.getRegisterState()}">
-                                                <!--                                                <td th:text="${producer.getConnectNumber()}"><font size= 4>重点供应商</font></td>-->
                                                 <td th:case="'0'">待审核</td>
                                                 <td th:case="'1'">审核中</td>
                                                 <td th:case="'2'">审核通过</td>
@@ -177,76 +175,10 @@
                     </div>
                    
                 </div>
-                <!-- <div class="col-sm-6 col-offser"><form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-                </div> -->
-                <!-- <div class="row">
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                            
-                    </div>
-                </div>
-                <div class="row cm-fix-height">
-                    <div class="col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+
             <footer class="cm-footer"><span class="pull-left">Connected as Sure</span><span class="pull-right">&copy; PAOMEDIA SARL</span></footer>
         </div>
-        
+        </div>
         <script src="assets/js/lib/jquery.min.js"></script>
         <script src="assets/js/jquery.mousewheel.min.js"></script>
         <script src="assets/js/jquery.cookie.min.js"></script>

@@ -186,73 +186,39 @@
                     </div>
                    
                 </div>
-                <!-- <div class="col-sm-6 col-offser"><form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-                </div> -->
-                <!-- <div class="row">
+
+                <div class="modal-footer no-margin-top" th:if="${pageInfo!=null}">
                     <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                        </div>
+                        当前第 [[${pageInfo.pageNum}]]页,共 [[${pageInfo.pages}]] 页.一共 [[${pageInfo.total}]] 条记录
                     </div>
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                            
-                    </div>
+
+                    <ul class="pagination pull-right no-margin">
+                        <li th:if="${pageInfo.hasPreviousPage}">
+                            <a th:href="'/producer/toProducerList?pageNum=1'">首页</a>
+                        </li>
+
+                        <li class="prev" th:if="${pageInfo.hasPreviousPage}">
+                            <a th:href="'/producer/toProducerList?pageNum='+${pageInfo.prePage}">
+                                <i class="ace-icon fa fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <!--遍历条数-->
+                        <li th:each="nav:${pageInfo.navigatepageNums}">
+                            <a th:href="'/producer/toProducerList?pageNum='+${nav}" th:text="${nav}" th:if="${nav != pageInfo.pageNum}"></a>
+                            <span style="font-weight: bold;background: #6faed9;" th:if="${nav == pageInfo.pageNum}" th:text="${nav}" ></span>
+                        </li>
+
+                        <li class="next" th:if="${pageInfo.hasNextPage}">
+                            <a th:href="'/producer/toProducerList?pageNum='+${pageInfo.nextPage}">
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="'/producer/toProducerList?pageNum='+${pageInfo.pages}">尾页</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="row cm-fix-height">
-                    <div class="col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">其他的资讯</div>
-                            <div class="panel-body">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <footer class="cm-footer"><span class="pull-left">Connected as Sure</span><span class="pull-right">&copy; PAOMEDIA SARL</span></footer>
         </div>
         </div>
